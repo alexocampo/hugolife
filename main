@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugo's RuneScape Life Countdown</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Trebuchet MS', sans-serif;
+            color: #d4af37;
+            background: #2e2e2e url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Runescape_Logo.svg/2560px-Runescape_Logo.svg.png') no-repeat center top;
+            background-size: contain;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        #percentage {
+            font-size: 3em;
+            color: #e5b96d;
+            margin-top: 20px;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 2px #000;
+            max-width: 600px;
+        }
+
+        .footer {
+            font-size: 0.8em;
+            color: #aaa;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hugo's RuneScape Life</h1>
+        <p>Hugo has played RuneScape for 11 months.</p>
+        <p>As time goes on, see how much of his life he's spent in Gielinor!</p>
+        <div id="percentage">Calculating...</div>
+    </div>
+    <div class="footer">
+        Not affiliated with RuneScape or Jagex Ltd. Created for entertainment.
+    </div>
+
+    <script>
+        const runescapeMonths = 11;
+        const runescapeYears = runescapeMonths / 12;
+        const birthYear = 1992; // Fixed birth year
+
+        function calculatePercentage() {
+            const currentYear = new Date().getFullYear();
+            const currentAgeYears = currentYear - birthYear;
+            const percentage = ((runescapeYears / currentAgeYears) * 100).toFixed(2);
+            document.getElementById('percentage').innerText = `${percentage}%`;
+        }
+
+        calculatePercentage();
+        setInterval(calculatePercentage, 60 * 60 * 1000); // Update every hour
+    </script>
+</body>
+</html>
